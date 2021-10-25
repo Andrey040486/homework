@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Есть словарь координат городов
+from pprint import pprint
 
 sites = {
     'Moscow': (550, 370),
@@ -37,7 +38,7 @@ distances['Paris']['London'] = london_paris
 
 
 
-print(distances)
+pprint(distances)
 
 
 
