@@ -11,8 +11,8 @@
 a, b = 179, 37
 count = a
 i = 0
-while count > b :
+while count > b:
     i += 1
     count = count - b
-print('Целочисленное деление',a ,'на',b ,'дает', i)
+print('Целочисленное деление', a, 'на', b, 'дает', i)
 
