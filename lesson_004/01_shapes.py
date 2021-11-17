@@ -29,43 +29,43 @@ import simple_draw as sd
 # sd.line()
 # Результат решения см lesson_004/results/exercise_01_shapes.jpg
 
-def triangle(x=0, y=0, angle=0, length=0):
-    point = sd.get_point(x, y)
-    for i in range(3):
-
-        v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
-        point = v1.end_point
-        angle += 120
-        v1.draw()
-
-triangle(100, 100, 0, 100)
-
-def square(x=0, y=0, angle=0, length=0):
-    point = sd.get_point(x, y)
-    for i in range(4):
-        v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
-        point = v1.end_point
-        angle += 90
-        v1.draw()
-square(400, 100, 0, 100)
-
-def pentagon(x=0, y=0, angle=0, length=0):
-    point = sd.get_point(x, y)
-    for i in range(5):
-        v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
-        point = v1.end_point
-        angle += 72
-        v1.draw()
-pentagon(100, 400, 0, 100)
-
-def hexagon(x=0, y=0, angle=0, length=0):
-    point = sd.get_point(x, y)
-    for i in range(6):
-        v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
-        point = v1.end_point
-        angle += 60
-        v1.draw()
-hexagon(400, 400, 0, 100)
+# def triangle(x=0, y=0, angle=0, length=0):
+#     point = sd.get_point(x, y)
+#     for i in range(3):
+#
+#         v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
+#         point = v1.end_point
+#         angle += 120
+#         v1.draw()
+#
+# triangle(100, 100, 0, 100)
+#
+# def square(x=0, y=0, angle=0, length=0):
+#     point = sd.get_point(x, y)
+#     for i in range(4):
+#         v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
+#         point = v1.end_point
+#         angle += 90
+#         v1.draw()
+# square(400, 100, 0, 100)
+#
+# def pentagon(x=0, y=0, angle=0, length=0):
+#     point = sd.get_point(x, y)
+#     for i in range(5):
+#         v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
+#         point = v1.end_point
+#         angle += 72
+#         v1.draw()
+# pentagon(100, 400, 0, 100)
+#
+# def hexagon(x=0, y=0, angle=0, length=0):
+#     point = sd.get_point(x, y)
+#     for i in range(6):
+#         v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
+#         point = v1.end_point
+#         angle += 60
+#         v1.draw()
+# hexagon(400, 400, 0, 100)
 # Часть 1-бис.
 # Попробуйте прикинуть обьем работы, если нужно будет внести изменения в этот код.
 # Скажем, связывать точки не линиями, а дугами. Или двойными линиями. Или рисовать круги в угловых точках. Или...
@@ -89,5 +89,15 @@ hexagon(400, 400, 0, 100)
 # Поэтому среди программистов есть принцип D.R.Y. https://clck.ru/GEsA9
 # Будьте ленивыми, не используйте копи-пасту!
 
+def figure(x=0, y=0, side=0, angle=0, length=0):
+    point = sd.get_point(x, y)
+    for i in range(side):
 
+        v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
+        point = v1.end_point
+        angle += 360/side
+        v1.draw()
+
+
+figure(200, 200, 20, 0, 50)
 sd.pause()
