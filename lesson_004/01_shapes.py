@@ -89,15 +89,15 @@ import simple_draw as sd
 # Поэтому среди программистов есть принцип D.R.Y. https://clck.ru/GEsA9
 # Будьте ленивыми, не используйте копи-пасту!
 
-def figure(x=0, y=0, side=0, angle=0, length=0):
+def figure(x, y, side, angle, length):
     point = sd.get_point(x, y)
-    for i in range(side):
+    for i in range(side - 1):
 
         v1 = sd.get_vector(start_point=point, angle=angle, length=length, width=3)
         point = v1.end_point
         angle += 360/side
         v1.draw()
-
+    sd.line(point, sd.get_point(x, y), width=3)
 
 figure(200, 200, 20, 0, 50)
 sd.pause()
