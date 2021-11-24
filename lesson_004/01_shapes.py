@@ -99,5 +99,8 @@ def figure(x, y, side, angle, length):
         v1.draw()
     sd.line(point, sd.get_point(x, y), width=3)
 
-figure(200, 200, 20, 0, 50)
+triangle = figure(100, 100, 3, 0,length=100)
+square = figure(400, 100, 4, 0,length=100)
+pentagon = figure(100, 400, 5, 0,length=100)
+hexagon = figure(400, 400, 6, 0,length=100)
 sd.pause()
