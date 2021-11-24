@@ -36,25 +36,25 @@ point_0 = sd.get_point(600, 5)
 #     v1.draw()
 #     v2.draw()
 
-def draw_branches(point, angle, length):
-    v0 = sd.get_vector(start_point=point, angle=angle, length=length)
-    v0.draw()
-    if length < 1:
-        return
-    v1 = sd.get_vector(start_point=v0.end_point, angle=angle + 30, length=length, width=1)
-    v2 = sd.get_vector(start_point=v0.end_point, angle=angle - 30, length=length, width=1)
-    v1.draw()
-    v2.draw()
-    next1_point = v1.end_point
-    next2_point = v2.end_point
-    next1_angle = angle + 30
-    next2_angle = angle - 30
-    next_length = length * .75
-    draw_branches(point=next1_point, angle=next1_angle, length=next_length)
-    draw_branches(point=next2_point, angle=next2_angle, length=next_length)
-
-
-draw_branches(point_0, 90, 100)
+# def draw_branches(point, angle, length):
+#     v0 = sd.get_vector(start_point=point, angle=angle, length=length)
+#     v0.draw()
+#     if length < 1:
+#         return
+#     v1 = sd.get_vector(start_point=v0.end_point, angle=angle + 30, length=length, width=1)
+#     v2 = sd.get_vector(start_point=v0.end_point, angle=angle - 30, length=length, width=1)
+#     v1.draw()
+#     v2.draw()
+#     next1_point = v1.end_point
+#     next2_point = v2.end_point
+#     next1_angle = angle + 30
+#     next2_angle = angle - 30
+#     next_length = length * .75
+#     draw_branches(point=next1_point, angle=next1_angle, length=next_length)
+#     draw_branches(point=next2_point, angle=next2_angle, length=next_length)
+#
+#
+# draw_branches(point_0, 90, 100)
 
 # 4) Усложненное задание (делать по желанию)
 # - сделать рандомное отклонение угла ветвей в пределах 40% от 30-ти градусов
@@ -63,6 +63,26 @@ draw_branches(point_0, 90, 100)
 
 # Пригодятся функции
 # sd.random_number()
+
+def draw_branches(point, angle, length):
+    v0 = sd.get_vector(start_point=point, angle=angle, length=length)
+    v0.draw()
+    if length < 1:
+        return
+    v1 = sd.get_vector(start_point=v0.end_point, angle=angle + sd.random_number(a=18, b=42), length=length, width=1)
+    v2 = sd.get_vector(start_point=v0.end_point, angle=angle - sd.random_number(a=18, b=42), length=length, width=1)
+    v1.draw()
+    v2.draw()
+    next1_point = v1.end_point
+    next2_point = v2.end_point
+    next1_angle = angle + 30
+    next2_angle = angle - 30
+    next_length = length * sd.random_number(a=6, b=9) / 10
+    draw_branches(point=next1_point, angle=next1_angle, length=next_length)
+    draw_branches(point=next2_point, angle=next2_angle, length=next_length)
+
+
+draw_branches(point_0, 90, 100)
 
 sd.pause()
 
