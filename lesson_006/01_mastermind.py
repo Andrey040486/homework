@@ -47,5 +47,5 @@ from mastermind_engine import make_a_number, check_a_number
 
 make_a_number()
 while True:
-input('Введите число:')
+    input('Введите число:')
 
