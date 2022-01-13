@@ -43,9 +43,15 @@
 # Это пример применения SOLID принципа (см https://goo.gl/GFMoaI) в архитектуре программ.
 # Точнее, в этом случае важен принцип единственной ответственности - https://goo.gl/rYb3hT
 
-from mastermind_engine import make_a_number, check_a_number
+from mastermind_engine import make_a_number, check_a_number, game_over
 
 make_a_number()
+counter = 0
 while True:
-    input('Введите число:')
+    num = input('Введите число:')
+    print(check_a_number(num=num))
+    counter +=1
+    if game_over():
+        print(counter)
+        break
 
