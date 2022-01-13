@@ -1,7 +1,7 @@
 from random import randint
 
 _holder = {}
-
+dct1 = 0
 
 
 def make_a_number():
@@ -17,23 +17,26 @@ def make_a_number():
 def check_a_number(num):
     bulls = 0
     cows = 0
-    dct = {}
-    num = str(num)
+    global dct1
+    dct1 = {}
+    dct2 = {}
+    for i in range(4):
+        dct1[i] = int(num[i])
     for j in range(4):
-        if int(num[j]) == _holder[j]:
+        if dct1[j] == _holder[j]:
             bulls += 1
     for h in range(4):
         for g in range(4):
-            if int(num[g]) == _holder[h]:
+            if dct1[g] == _holder[h]:
                 cows += 1
     if bulls == 4:
         return "Вы выиграли! Идите в ЖОПУ!"
 
     else:
-        dct.setdefault('БЫКИ', bulls)
-        dct.setdefault('КОРОВЫ', cows)
-        return dct
+        dct2.setdefault('БЫКИ', bulls)
+        dct2.setdefault('КОРОВЫ', cows)
+        return dct2
 
 
 def game_over():
-    return bulls == 4
+    return dct1 == _holder

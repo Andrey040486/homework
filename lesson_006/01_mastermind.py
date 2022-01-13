@@ -50,8 +50,8 @@ counter = 0
 while True:
     num = input('Введите число:')
     print(check_a_number(num=num))
-    counter +=1
+    counter += 1
     if game_over():
-        print(counter)
+        print('Количество ходов:', counter)
         break
 
