@@ -53,18 +53,25 @@ class Snowflake:
 
 def get_flakes(count):
     _flakes = []
-    for i in range(0, count-1):
+    for i in range(0, count):
         _flakes.append(Snowflake(x=randint(50, 600), y=500, length=randint(5, 15)))
     return _flakes
 
+
 def get_fallen_flakes():
-    pass
+    p = 0
+    for i in flakes:
+        if i.can_fall():
+            p += 1
+    return p
 
 
 def append_flakes(count):
-    pass
 
-N = 20
+
+
+
+N = 2
 flakes = get_flakes(count=N)  # создать список снежинок
 while True:
     for flake in flakes:
