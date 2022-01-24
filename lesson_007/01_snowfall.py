@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from random import randint, random
 
 import simple_draw as sd
 
@@ -21,7 +22,8 @@ class Snowflake:
         sd.snowflake(center=point, length=self.length, color=sd.background_color)
 
     def move(self):
-        self.y -= 5
+        self.y -= randint(5, 10)
+        self.x += randint(-10, 10)
 
     def draw(self):
         point = sd.get_point(x=self.x, y=self.y)
