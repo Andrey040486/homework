@@ -25,13 +25,12 @@ class Water:
         return 'Вода'
 
     def __add__(self, other):
-        return Storm(part1=self, part2=other)
-
-    def __add__(self, other):
-        return Steam(part1=self, part2=other)
-
-    def __add__(self, other):
-        return Mud(part1=self, part2=other)
+        if isinstance(other, Air):
+            return Storm(part1=self, part2=other)
+        if isinstance(other, Fire):
+            return Steam(part1=self, part2=other)
+        else:
+            return Mud(part1=self, part2=other)
 
 
 class Air:
@@ -40,13 +39,12 @@ class Air:
         return 'Воздух'
 
     def __add__(self, other):
-        return Storm(part1=self, part2=other)
-
-    def __add__(self, other):
-        return Thunder(part1=self, part2=other)
-
-    def __add__(self, other):
-        return Dust(part1=self, part2=other)
+        if isinstance(other, Water):
+            return Storm(part1=self, part2=other)
+        if isinstance(other, Fire):
+            return Thunder(part1=self, part2=other)
+        else:
+            return Dust(part1=self, part2=other)
 
 
 class Fire:
@@ -55,13 +53,14 @@ class Fire:
         return 'Огонь'
 
     def __add__(self, other):
-        return Steam(part1=self, part2=other)
+        if isinstance(other, Water):
+            return Steam(part1=self, part2=other)
 
-    def __add__(self, other):
-        return Thunder(part1=self, part2=other)
+        if isinstance(other, Air):
+            return Thunder(part1=self, part2=other)
 
-    def __add__(self, other):
-        return Lava(part1=self, part2=other)
+        if isinstance(other, Land):
+            return Lava(part1=self, part2=other)
 
 
 class Land:
@@ -70,13 +69,14 @@ class Land:
         return 'Зеля'
 
     def __add__(self, other):
-        return Dust(part1=self, part2=other)
+        if isinstance(other, Air):
+            return Dust(part1=self, part2=other)
 
-    def __add__(self, other):
-        return Mud(part1=self, part2=other)
+        if isinstance(other, Water):
+            return Mud(part1=self, part2=other)
 
-    def __add__(self, other):
-        return Lava(part1=self, part2=other)
+        if isinstance(other, Fire):
+            return Lava(part1=self, part2=other)
 
 
 class Storm:
@@ -145,6 +145,6 @@ class Lava:
 print(Water(), '+', Air(), '=', Water() + Air())
 print(Water(), '+', Fire(), '=', Water() + Fire())
 print(Water(), '+', Land(), '=', Water() + Land())
-print(Air(), '+', Fire(), '=', Water() + Fire())
-print(Air(), '+', Land(), '=', Water() + Land())
+print(Air(), '+', Fire(), '=', Air() + Fire())
+print(Air(), '+', Land(), '=', Air() + Land())
 print(Land(), '+', Fire(), '=', Land() + Fire())
