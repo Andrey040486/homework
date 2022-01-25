@@ -3,6 +3,8 @@ from random import randint, random
 
 import simple_draw as sd
 
+sd.resolution = (1200, 600)
+
 
 # Шаг 1: Реализовать падение снежинки через класс. Внести в методы:
 #  - создание снежинки с нужными параметрами
@@ -30,10 +32,7 @@ class Snowflake:
         sd.snowflake(center=point, length=self.length)
 
     def can_fall(self):
-        if self.y < 10:
-            return False
-        else:
-            return True
+        return self.y >= 300
 
 
 # flake = Snowflake(x=100, y=500, length=10)
@@ -59,19 +58,25 @@ def get_flakes(count):
 
 
 def get_fallen_flakes():
+
     p = 0
     for i in flakes:
-        if i.can_fall():
+        if not i.can_fall():
             p += 1
+        # else:
+        #     break
     return p
 
 
 def append_flakes(count):
+    for j in range(0, count):
+        flakes.append(Snowflake(x=randint(50, 600), y=500, length=randint(5, 15)))
+    for i in range(0, count):
+        flakes.pop(i)
+    return flakes
 
 
-
-
-N = 2
+N = 10
 flakes = get_flakes(count=N)  # создать список снежинок
 while True:
     for flake in flakes:
@@ -79,6 +84,7 @@ while True:
         flake.move()
         flake.draw()
     fallen_flakes = get_fallen_flakes()  # подчитать сколько снежинок уже упало
+    print(fallen_flakes)
     if fallen_flakes:
         append_flakes(count=fallen_flakes)  # добавить еще сверху
     sd.sleep(0.1)
