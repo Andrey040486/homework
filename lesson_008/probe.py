@@ -151,6 +151,10 @@ class Wife(Human):
             self.house.money -= 50
             self.house.cats_food += 50
 
+    def have_a_child(self):
+        cprint('{} родила ребенка'.format(self.name), color='green')
+        self.fullness -= 10
+
     def bye_for_coat(self):
         cprint('{} Купила шубу'.format(self.name), color='green')
         self.fullness -= 10
@@ -164,6 +168,40 @@ class Wife(Human):
 
     def vatch_TV(self):
         cprint('{} Смотрела ТВ целый день'.format(self.name), color='green')
+        self.fullness -= 10
+
+
+class Child(Human):
+
+    def __init__(self, name):
+        super().__init__(name=name)
+        self.name = name
+        self.fullness = 30
+        self.house = None
+        self.happiness = 100
+
+    def __str__(self):
+        return super().__str__()
+
+    def act(self):
+        if self.fullness <= 0:
+            cprint('{} помер...'.format(self.name), color='red')
+            return
+        elif self.fullness <= 20:
+            self.eat()
+        else:
+            self.sleep()
+
+    def eat(self):
+        cprint('{} ест'.format(self.name), color='magenta')
+        self.fullness += 10
+        self.house.food -= 10
+
+    def go_to_the_house(self, house):
+        self.house = house
+
+    def sleep(self):
+        cprint('{} дрыхнет'.format(self.name), color='magenta')
         self.fullness -= 10
 
 
@@ -215,9 +253,12 @@ home = House()
 serge = Husband(name='Сережа')
 masha = Wife(name='Маша')
 kisa = Cat(name='Тимошка')
+kolyan = Child(name='Колян')
 serge.go_to_the_house(house=home)
 masha.go_to_the_house(house=home)
+kolyan.go_to_the_house(house=home)
 serge.get_a_cat()
+masha.have_a_child()
 kisa.go_to_the_house(house=home)
 
 for day in range(1, 366):
@@ -225,10 +266,12 @@ for day in range(1, 366):
     cprint('================== День {} =================='.format(day), color='red')
     serge.act()
     masha.act()
+    kolyan.act()
     kisa.act()
     print('--- в конце дня ---')
     cprint(serge, color='cyan')
     cprint(masha, color='cyan')
+    cprint(kolyan, color='cyan')
     cprint(kisa, color='cyan')
     cprint(home, color='cyan')
 cprint('===== еды съедено {}, заработано денег {}, куплено шуб {} ====='.format(serge.all_food + masha.all_food
