@@ -3,6 +3,7 @@ from pprint import pprint
 
 from random import randint
 
+
 # txt = 'строка'
 # print(f'{txt:*^30}')
 
@@ -24,6 +25,7 @@ from random import randint
 
 
 class Sum:
+    amount = 0
 
     def __init__(self, file_name):
         self.file_name = file_name
@@ -34,7 +36,6 @@ class Sum:
         for filename in zfile.namelist():
             zfile.extract(filename)
         self.file_name = filename
-
 
     def collect(self):
         if self.file_name.endswith('.zip'):
@@ -48,10 +49,16 @@ class Sum:
             if char.isalpha():
                 if char in self.stat:
                     self.stat[char] += 1
+                    self.amount += 1
                 else:
                     self.stat[char] = 1
+                    self.amount += 1
+
+    def amouent(self):
+        print('ИТОГО', self.amount)
 
 
 sum = Sum(file_name='voyna-i-mir.txt.zip')
 sum.collect()
 pprint(sum.stat)
+sum.amouent()
