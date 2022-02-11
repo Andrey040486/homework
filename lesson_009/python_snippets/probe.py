@@ -53,20 +53,23 @@ class Sum:
                 else:
                     self.stat[char] = 1
                     self.amount += 1
-        # for char in self.stat:
-        #     print(self.stat[char])
-        #
-    def amouent(self):
+
+    def print(self):
+        print('+---------+----------+')
+        print('|  буква  | частота  |')
+        print('+---------+----------+')
+
+        for key, value in sorted(sum.stat.items()):
+            print(f'|{key: >5}    | {value: <8} |')
+        print('+---------+----------+')
         print(f'| ИТОГО   | {self.amount}  |')
         print('+---------+----------+')
 
+    # def sort(self):
+    #     sorted(self.stat.keys())
+    #     sorted(self.stat.items())
 sum = Sum(file_name='voyna-i-mir.txt.zip')
 sum.collect()
-print('+---------+----------+')
-print('|  буква  | частота  |')
-print('+---------+----------+')
-for key, value in sum.stat.items():
-    print(f'|{key: >5}    | {value: <8} |')
-print('+---------+----------+')
-# pprint(sum.stat.keys())
-sum.amouent()
+# sum.sort()
+sum.print()
+

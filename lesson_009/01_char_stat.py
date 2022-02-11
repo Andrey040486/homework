@@ -65,6 +65,7 @@ class Sum:
         print(f'| ИТОГО   | {self.amount}  |')
         print('+---------+----------+')
 
+
 path = 'C:/Users/aik30/PycharmProjects/Python_base/lesson_009/python_snippets/voyna-i-mir.txt.zip'
 normalized_path = os.path.normpath(path)
 sum = Sum(file_name=normalized_path)
