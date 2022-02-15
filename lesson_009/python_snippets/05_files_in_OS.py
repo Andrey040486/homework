@@ -26,7 +26,7 @@ import time
 time.gmtime(secs)  # вернет тьюпл со временем https://docs.python.org/3/library/time.html#time.struct_time
 
 # сформирвать правильный путь к файлу с учетом особенностей ОС.
-# os.path.join(path1[, path2[, ...]])
+os.path.join(path1[, path2[, ...]])
 
 # получить родительскую директорию
 os.path.dirname(path)
