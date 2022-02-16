@@ -29,15 +29,24 @@ class Sorter:
                             shutil.copy2(full_file_path1, target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(file_time[1]) + '\\' + str(file_time[2]))
                         else:
                             self.prev_char_D = file_time[2]
-                            # os.makedirs(target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(file_time[1]) + '\\' + str(file_time[2]))
+                            os.makedirs(target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(
+                                file_time[1]) + '\\' + str(file_time[2]), exist_ok=True)
+                            shutil.copy2(full_file_path1,
+                                         target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(
+                                             file_time[1]) + '\\' + str(file_time[2]))
                     else:
                         self.prev_char_M = file_time[1]
-                        # os.makedirs(target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(file_time[1]))
+                        os.makedirs(
+                            target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(file_time[1]) + '\\' + str(
+                                file_time[2]), exist_ok=True)
+                        shutil.copy2(full_file_path1, target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(
+                            file_time[1]) + '\\' + str(file_time[2]))
                 else:
                     self.prev_char_Y = file_time[0]
                     os.makedirs(target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(file_time[1]) + '\\' + str(file_time[2]), exist_ok=True)
                     shutil.copy2(full_file_path1, target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(
                         file_time[1]) + '\\' + str(file_time[2]))
+
 
 sort = Sorter(origin_folder='C:\\Users\\aik30\\Downloads', target_folder='E:/icons_by_year')
 sort.sorted()
