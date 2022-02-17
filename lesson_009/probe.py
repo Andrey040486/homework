@@ -26,7 +26,9 @@ class Sorter:
                 if file_time[0] == self.prev_char_Y:
                     if file_time[1] == self.prev_char_M:
                         if file_time[2] == self.prev_char_D:
-                            shutil.copy2(full_file_path1, target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(file_time[1]) + '\\' + str(file_time[2]))
+                            shutil.copy2(full_file_path1,
+                                         target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(
+                                             file_time[1]) + '\\' + str(file_time[2]))
                         else:
                             self.prev_char_D = file_time[2]
                             os.makedirs(target_folder_normalized + '\\' + str(file_time[0]) + '\\' + str(
