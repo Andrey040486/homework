@@ -19,6 +19,7 @@
 
 ENLIGHTENMENT_CARMA_LEVEL = 777
 
-# TODO здесь ваш код
+def one_day():
+    dice = randint(1, 13)
 
 # https://goo.gl/JnsDqu
