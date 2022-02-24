@@ -1,8 +1,24 @@
-# -*- coding: utf-8 -*-
+# name, email, age = line.split(' ')
+# age = int(age)
+class NotNameError(Exception):
+    pass
 
-BRUCE_WILLIS = 42
 
-input_data = input('Если хочешь что-нибудь сделать, сделай это сам: ')
-leeloo = int(input_data[4])
-result = BRUCE_WILLIS * leeloo
-print(f"- Leeloo Dallas! Multi-pass № {result}!")
+class NotEmailError(Exception):
+    pass
+
+
+with open('registrations.txt', 'r', encoding='utf8') as ff:
+    for line in ff:
+        line = line[:-1]
+        try:
+            name, email, age = line.split(' ')
+            age = int(age)
+        except ValueError as exc:
+
+            if 'unpack' in exc.args[0]:
+                print(f'Не хватает операндов {exc} в строке {line}')
+            elif 10 > age > 99:
+                print(f'поле {age} НЕ является числом от 10 до 99 в строке {line}')
+
+
