@@ -19,8 +19,12 @@ def registration(line):
     if not name.isalpha():
         raise NotNameError
     # if '@' and '.' in email is True:
-    if email.find('.') == -1 and email.find('@') == -1:
+    if email.find('@') == -1 or email.find('.') == -1:
         raise NotEmailError
+    else:
+        file = open('registrations_good.log', mode='a', encoding='utf8')  # mode (режим): запись в конец
+        file_content = f'{line}\n'
+        file.write(file_content)
 
 
 with open('registrations.txt', 'r', encoding='utf8') as ff:
@@ -31,9 +35,21 @@ with open('registrations.txt', 'r', encoding='utf8') as ff:
         except ValueError as exc:
             if 'unpack' in exc.args[0]:
                 print(f'Не хватает операндов {exc} в строке {line}')
+                file = open('registrations_bad.log', mode='a', encoding='utf8')  # mode (режим): запись в конец
+                file_content = f'[{line}] - Не хватает операндов в строке\n'
+                file.write(file_content)
             else:
                 print(f'поле НЕ является числом от 10 до 99 в строке {line}')
+                file = open('registrations_bad.log', mode='a', encoding='utf8')  # mode (режим): запись в конец
+                file_content = f'[{line}] - поле НЕ является числом от 10 до 99 в строке\n'
+                file.write(file_content)
         except NotNameError:
             print(f'поле имени содержит НЕ только буквы в строке {line}')
+            file = open('registrations_bad.log', mode='a', encoding='utf8')  # mode (режим): запись в конец
+            file_content = f'[{line}] - поле имени содержит НЕ только буквы в строке\n'
+            file.write(file_content)
         except NotEmailError:
             print(f'поле емейл НЕ содержит @ и .(точку) в строке {line}')
+            file = open('registrations_bad.log', mode='a', encoding='utf8')  # mode (режим): запись в конец
+            file_content = f'[{line}] - поле емейл НЕ содержит @ и .(точку) в строке\n'
+            file.write(file_content)
